@@ -5,11 +5,12 @@ Requires at least: 2.7.0
 Tested up to: 2.7.2
 Stable tag: 1.0
 
-Trafficspaces plugin display ads from your ad zone on your wordpress site.
+The Trafficspaces Wordpress plugin helps you integrate ads easily into your Wordpress site.
 
 == Description ==
 
-Trafficspaces plugin displays your ads on the sidebar of your Wordpress site. You can configure the ad zones whose ads will be displayed on  the sidebar of your wordpress site.
+The Trafficspaces Wordpress plugin helps you integrate ads easily into your Wordpress site.
+It allows you to setup the layout of your ad zones in the sidebar without needing to edit any code. Once it is setup, your ads will start to display automatically.
 
 
 For comments, questions and support use this email <a href="mailto:technical@trafficspaces.com">technical@trafficspaces.com</a>
