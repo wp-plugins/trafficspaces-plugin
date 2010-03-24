@@ -3,7 +3,7 @@ Contributors: Trafficspaces
 Tags: ads, ad-zones, text-ads, trafficspaces, ad-tags, video-ads, advertisers, publishers, ad-campaign, ad-self-service
 Requires at least: 2.7.0
 Tested up to: 2.7.2
-Stable tag: 2.7.2
+Stable tag: 1.0
 
 Trafficspaces plugin display ads from your ad zone on your wordpress site.
 
