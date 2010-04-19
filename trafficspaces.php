@@ -46,17 +46,6 @@ function get_ts_adservice(){
 		scriptRef.setAttribute("src", "http://ads.trafficspaces.net/v1.22/adservice.js");
 		scriptRef.setAttribute("id", "adservice");
 		document.getElementsByTagName("head")[0].appendChild(scriptRef);
-		alert(scriptRef);
-
-/*
-		var head = document.getElementsByTagName("head")[0];
-		script = document.createElement('script');
-		script.id = 'adservice';
-		script.type = 'text/javascript';
-		script.src = "http://ads.trafficspaces.net/v1.22/adservice.js";
-		head.appendChild(script);
-*/
-		//alert(head.innerHTML);
 	</script>
 
 	<?php
