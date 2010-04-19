@@ -2,10 +2,10 @@
 
 /*
 	Plugin Name: Trafficspaces Widgets
-	Version: 1.0
+	Version: 1.0.2
 	Plugin URI: http://www.trafficspaces.com
 	Description: Plug in Trafficspaces with wordpress
-	Author: PM Global Consulting
+	Author: Trafficspaces
 	Author URI: http://www.trafficspaces.com
 */
 
@@ -20,7 +20,7 @@ function ts_plugs(){
 		if ($rows > 0 && $cols > 0){
 			get_ts_adservice();
 			echo '<table class="ts_ads_widgets">';
-			
+
 			for ($row = 0; $row < $rows; $row++){
 				echo '<tr>';
 					for ($col = 0; $col < $cols; $col++){
@@ -30,26 +30,35 @@ function ts_plugs(){
 					}
 				echo '</tr>';
 			}
-			
+
 			echo '</table>';
 			echo get_ts_fetch_zones();
 		}
 	}
-	
+
 }
 
 function get_ts_adservice(){
-	?> 
+	?>
 	<script>
+		var scriptRef = document.createElement('script');
+		scriptRef.setAttribute("type", "text/javascript");
+		scriptRef.setAttribute("src", "http://ads.trafficspaces.net/v1.22/adservice.js");
+		scriptRef.setAttribute("id", "adservice");
+		document.getElementsByTagName("head")[0].appendChild(scriptRef);
+		alert(scriptRef);
+
+/*
 		var head = document.getElementsByTagName("head")[0];
 		script = document.createElement('script');
 		script.id = 'adservice';
 		script.type = 'text/javascript';
 		script.src = "http://ads.trafficspaces.net/v1.22/adservice.js";
 		head.appendChild(script);
+*/
 		//alert(head.innerHTML);
 	</script>
-	
+
 	<?php
 }
 function get_ts_fetch_zones(){
@@ -68,7 +77,7 @@ function ts_plugs_control(){
 		$options['row'] = htmlspecialchars($_POST['ts_widget_row']);
 		$cols = $options['column'];
 		$rows = $options['row'];
-		
+
 		if (intval($rows) > 0 && intval($cols) > 0){
 			for ($i = 0; $i < $rows; $i++){
 				for ($j = 0; $j < $cols; $j++){
@@ -83,7 +92,7 @@ function ts_plugs_control(){
 
 		update_option("ts_widget_options", $options);
 	}
-	
+
 	?>
 	<style>
 		table.ts_tbl td{
@@ -99,7 +108,7 @@ function ts_plugs_control(){
 		table.ts_input_tbl input{
 			width: 115px;
 		}
-		
+
 		span.prod_text {
 			font-style: italic;
 		}
@@ -115,17 +124,17 @@ function ts_plugs_control(){
 		$options['title'] = "Trafficspaces";
 		$options['column'] = "1";
 		$options['row'] = "1";
-	}    
-	
+	}
 
-?>	
+
+?>
 		<p style="margin-bottom: 0px; background-color: #efefef; padding: 2px"><span>Show my ads in</span></p>
 		<table class="ts_tbl">
 			<tr>
 				<td valign="center">
 					<select onchange="loadIDBox()" id="ts_widget_row" name="ts_widget_row">
 					<?php for ($i = 1; $i < 10; $i++){
-						echo '<option value="' .$i. '"' . ($options['row'] == $i ? " selected " : ""). ' ">'. $i .'</option>';	
+						echo '<option value="' .$i. '"' . ($options['row'] == $i ? " selected " : ""). ' ">'. $i .'</option>';
 					}
 					?>
 					</select> rows
@@ -133,7 +142,7 @@ function ts_plugs_control(){
 				<td valign="center">
 					<select onchange="loadIDBox()" id="ts_widget_column" name="ts_widget_column">
 					<?php for ($i = 1; $i < 3; $i++){
-						echo '<option value="' .$i.'"' . ($options['column'] == $i ? " selected " : ""). ' ">'. $i .'</option>';	
+						echo '<option value="' .$i.'"' . ($options['column'] == $i ? " selected " : ""). ' ">'. $i .'</option>';
 					}
 					?>
 					</select> columns
@@ -147,9 +156,9 @@ function ts_plugs_control(){
 			<?php
 				$rows = $options['row'];
 				$cols = $options['column'];
-				
+
 				//var_dump($options);
-				
+
 				if (intval($rows) > 0 && intval($cols) > 0){
 					$prods = intval($rows) * intval($cols);
 					echo '<table class="ts_input_tbl">';
@@ -168,15 +177,15 @@ function ts_plugs_control(){
 					}
 					echo '</table>';
 				}
-				
+
 			?>
 		</div>
-		
+
 		<script type="text/javascript">
 			var firstTime = true;
 			var firstTimeContent = null;
 			var first_row = getTSObject("ts_widget_row").value;
-			var first_col = getTSObject("ts_widget_column").value; 
+			var first_col = getTSObject("ts_widget_column").value;
 			var firstTimeRow = 0;
 			var firstTimeCol = 0;
 			function getTSObject(obj){
@@ -191,13 +200,13 @@ function ts_plugs_control(){
 				}
 				var cols = getTSObject("ts_widget_column").value;
 				var rows = getTSObject("ts_widget_row").value;
-				
+
 				if (!firstTime && cols == firstTimeCol && rows == firstTimeRow){
 					getTSObject("prod").innerHTML = ts_prod(rows, cols);
 					getTSObject("ts_content").innerHTML = firstTimeContent;
 					return;
 				}
-				
+
 				if (cols > 0 && rows > 0){
 						var prods = ts_prod(rows, cols);
 						getTSObject("prod").innerHTML = prods;
@@ -223,14 +232,14 @@ function ts_plugs_control(){
 				return row * col;
 			}
 		</script>
-		
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
+
 	<?php
 }
 function ts_widget($args){
