@@ -40,12 +40,7 @@ function ts_plugs(){
 
 function get_ts_adservice(){
 	?>
-	<script>
-		var scriptRef = document.createElement('script');
-		scriptRef.setAttribute("type", "text/javascript");
-		scriptRef.setAttribute("src", "http://ads.trafficspaces.net/v1.22/adservice.js");
-		scriptRef.setAttribute("id", "adservice");
-		document.getElementsByTagName("head")[0].appendChild(scriptRef);
+	<script src="http://ads.trafficspaces.net/v1.22/adservice.js" type="text/javascript">
 	</script>
 
 	<?php
